@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNX - PA SYSTEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-auto">
+                <div class="container-fluid card custom-card shadow" id="div_titulo">
+                    <h1 class="text-center p-2"><i class="fa-solid fa-keyboard"></i> CNX <i class="fa-solid fa-headset"></i></h1>
+                    <h2 class="text-center p-2"><i class="fa-solid fa-gear"></i> MI | BKO <i class="fa-solid fa-gears"></i></h2>
+                </div>
+
+                <!-- seção principal -->
+                <div class="container-fluid card custom-card shadow p-3">
+                    <div class="form-section">
+                        <div class="row w-100 mb-3" id="div_linha_nome_operador">
+                            <div class="col-md-auto w-100">
+                                <h4 class="border-bottom">
+                                    <i class="fa-solid fa-address-card"></i>
+                                    IDENTIFICAÇÃO OPERADOR:
+                                </h4>
+                            </div>
+                            <div class="col-md-auto w-100">
+                                <label for="txt_nome_operador">Seu Nome:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_nome_operador" title="Copiar Nome Operador">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_nome_operador" title="Colar Nome Operador">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="text" class="form-control" id="txt_nome_operador" placeholder="Digite seu nome aqui">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_nome_operador" title="Limpar Nome Operador">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row w-100" id="div_linha_tabulacao">
+                            <div class="col-md-auto">
+                                <h4 class="border-bottom">
+                                    <i class="fa-solid fa-calculator"></i>
+                                    TABULAÇÃO (Análise Completa)
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_tabulacao">
+                            <div class="col-md-auto mb-3">
+                                <label for="sel_tabulacao">Selecione a Tabulação:</label>
+                                <select class="form-select" id="sel_tabulacao"></select>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_troca_titularidade">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_troca_titularidade" href="#div_troca_titularidade" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_troca_titularidade">
+                                    <label class="form-check-label" for="cbx_troca_titularidade">Troca de Titularidade?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid collapse" id="div_troca_titularidade" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="cbx_desvinculacao_unidade">
+                                        <label class="form-check-label" for="cbx_desvinculacao_unidade">Desvinculação de Unidade?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_nome_novo_morador">Nome Novo Morador:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_nome_novo_morador" title="Copiar Nome Novo Morador">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_nome_novo_morador" title="Colar Nome Novo Morador">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_nome_novo_morador">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_nome_novo_morador" title="Limpar Nome Novo Morador">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_falta_documento">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_falta_documento" href="#div_falta_documento" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_falta_documento">
+                                    <label class="form-check-label" for="cbx_falta_documento">Falta Algum Documento?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid collapse" id="div_falta_documento" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_documentos_faltantes">Documento(s) Faltante(s):</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_documentos_faltantes" title="Copiar Documentos Faltantes">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_documentos_faltantes" title="Colar Documentos Faltantes">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_documentos_faltantes">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_documentos_faltantes" title="Limpar Documentos Faltantes">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_tem_sinistro">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_tem_sinistro" href="#div_sinistro" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_sinistro">
+                                    <label class="form-check-label" for="cbx_tem_sinistro">Tem Sinistro?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid collapse" id="div_sinistro" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="cbx_tem_vitima">
+                                        <label class="form-check-label" for="cbx_tem_vitima">Tem Vítima?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_numero_boletim_ocorrencia">Número do Boletim de Ocorrência:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_numero_boletim_ocorrencia" title="Copiar Número do Boletim de Ocorrência">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_numero_boletim_ocorrencia" title="Colar Número do Boletim de Ocorrência">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_numero_boletim_ocorrencia">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_numero_boletim_ocorrencia" title="Limpar Número do Boletim de Ocorrência">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_risco_morte">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_risco_morte">
+                                    <label class="form-check-label" for="cbx_risco_morte">Risco de Morte?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_script_seguranca">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_script_seguranca" href="#div_script_seguranca" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_script_seguranca">
+                                    <label class="form-check-label" for="cbx_script_seguranca">Script de Segurança Informado?</label>
+                                </div>
+                                <div class="container-fluid collapse" id="div_script_seguranca" style="padding-top: 15px; padding-bottom: 15px;">
+                                    <div class="row w-100">
+                                        <div class="col-md-auto text-warning bg-dark p-3">
+                                            <i class="fa-solid fa-check"></i> NÃO LOCALIZAR O VAZAMENTO <br><hr>
+                                            <i class="fa-solid fa-check"></i> JAMAIS TENTAR REPARAR <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO USE FÓSFORO <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO USE ISQUEIRO <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO FUMAR <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO UTILIZAR INTERRUPTORES <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO UTILIZAR DISJUNTORES <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO DESLIGAR/LIGAR LUZES <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO DESLIGAR/ACIONAR CAMPAINHA <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO UTILIZAR INTERFONE <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO UTILIZAR FOGÃO <br><hr>
+                                            <i class="fa-solid fa-check"></i> NÃO UTILIZAR CHUVEIRO <br><hr>
+                                            <i class="fa-solid fa-check"></i> Distanciar celulares do vazamento <br><hr>
+                                            <i class="fa-solid fa-check"></i> Distanciar eletrônicos do vazamento <br><hr>
+                                            <i class="fa-solid fa-check"></i> Registro do medidor fechado <br><hr>
+                                            <i class="fa-solid fa-check"></i> Verificar ano fabricação medidor <br><hr>
+                                            <i class="fa-solid fa-check"></i> Janelas/Portas abertas <br><hr>
+                                            <i class="fa-solid fa-check"></i> Local evacuado (pessoas e pets) <br><hr>
+                                            <i class="fa-solid fa-check"></i> Subir para último andar <br><hr>
+                                            <i class="fa-solid fa-check"></i> Síndico acionado <br><hr>
+                                            <i class="fa-solid fa-check"></i> Ligou para 193 - Bombeiros (Longe do foco) <br><hr>
+                                            <i class="fa-solid fa-check"></i> Se houver vítima, ligar 192 - SAMU (Longe do foco)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_teste_fuga">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_teste_fuga">
+                                    <label class="form-check-label" for="cbx_teste_fuga">Teste de Fuga Realizado?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_inadimplente">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_inadimplente" href="#div_inadimplencia" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_inadimplencia">
+                                    <label class="form-check-label" for="cbx_inadimplente">Inadimplente?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid collapse" id="div_inadimplencia" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_dias_atraso">Dias de Atraso:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_dias_atraso" title="Copiar Dias de Atraso">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_dias_atraso" title="Colar Dias de Atraso">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_dias_atraso">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_dias_atraso" title="Limpar Dias de Atraso">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor_devido_atrasado">Valor Devido Atrasado:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor_devido_atrasado" title="Copiar Valor Devido Atrasado">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor_devido_atrasado" title="Colar Valor Devido Atrasado">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor_devido_atrasado" step=".01">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor_devido_atrasado" title="Limpar Valor Devido Atrasado">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_medidor_bloqueado">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_medidor_bloqueado">
+                                    <label class="form-check-label" for="cbx_medidor_bloqueado">Medidor Bloqueado?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_cobranca_taxas_multa">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_cobranca_taxas_multa" href="#div_valor_taxa_multa" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_valor_taxa_multa">
+                                    <label class="form-check-label" for="cbx_cobranca_taxas_multa">Há cobrança de taxas/multa?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid collapse" id="div_valor_taxa_multa" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor_taxa_multa">Valor Taxa/Multa:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor_taxa_multa" title="Copiar Valor Taxa/Multao">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor_taxa_multa" title="Colar Valor Taxa/Multa">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_valor_taxa_multa">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor_taxa_multa" title="Limpar Valor Taxa/Multa">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <input type="checkbox" class="btn-check" id="cbx_leitura" autocomplete="off">
+                                    <label class="btn btn-info" for="cbx_leitura">
+                                        Leitura (R$3,50)
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <input type="checkbox" class="btn-check" id="cbx_releitura" autocomplete="off">
+                                    <label class="btn btn-info" for="cbx_releitura">
+                                        Releitura (R$42,67)
+                                        <i class="fa-solid fa-arrows-rotate"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <input type="checkbox" class="btn-check" id="cbx_desbloqueio_irregular" autocomplete="off">
+                                    <label class="btn btn-info" for="cbx_desbloqueio_irregular">
+                                        Desbloqueio Irregular (R$150,00)
+                                        <i class="fa-solid fa-ban"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_nome_cliente">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_nome_cliente">Nome Cliente:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_nome_cliente" title="Copiar Nome Cliente">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_nome_cliente" title="Colar Nome Cliente">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="text" class="form-control" id="txt_nome_cliente">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_nome_cliente" title="Limpar Nome Cliente">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_cod_sap_cliente">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_cod_sap_cliente">Código SAP Cliente:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_cod_sap_cliente" title="Copiar Código SAP Cliente">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_cod_sap_cliente" title="Colar Código SAP Cliente">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_cod_sap_cliente" min="0" max="9999999999">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_cod_sap_cliente" title="Limpar Código SAP Cliente">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_num_caso">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_num_caso">Número do Caso:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_num_caso" title="Copiar Número do Caso">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_num_caso" title="Colar Número do Caso">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" min="0" id="txt_num_caso">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_num_caso" title="Limpar Número do Caso">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- leitura atual / anterior -->
+                        <div class="row w-100 mb-3 border-top" id="div_linha_leitura_atual_anterior">
+                            <div class="col-md-auto w-100">
+                                <label for="txt_leitura_atual">Leitura Atual:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_leitura_atual" title="Copiar Leitura Atual">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_leitura_atual" title="Colar Leitura Atual">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_leitura_atual" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_leitura_atual">
+                                        <i class="fa-solid fa-eraser" title="Limpar Leitura Atual"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-auto w-100 mb-3">
+                                <label for="txt_leitura_anterior">Leitura Anterior:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_leitura_anterior" title="Copiar Leitura Anterior">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_leitura_anterior" title="Colar Leitura Anterior">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_leitura_anterior" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_leitura_anterior" title="Limpar Leitura Anterior">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- analise de consumo -->
+                        <div class="row w-100 mb-3" id="div_linha_m3_consumo_valor">
+                            <div class="col-md-auto w-100">
+                                <label for="txt_m3">M3:</label>
+                                <input type="text" class="form-control" id="txt_m3" readonly>
+                            </div>
+                            <div class="col-md-auto w-100">
+                                <label for="txt_consumo">Consumo:</label>
+                                <input type="text" class="form-control" id="txt_consumo" readonly>
+                            </div>
+                            <div class="col-md-auto w-100">
+                                <label for="txt_valor_devido">Valor Devido (R$):</label>
+                                <input type="text" class="form-control" id="txt_valor_devido" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row w-100" id="div_linha_data_demonstrativo_reclamado">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_data_demonstrativo_reclamado">Data Demonstrativo Reclamado:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_data_demonstrativo_reclamado" title="Copiar Data Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_data_demonstrativo_reclamado" title="Colar Data Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="date" class="form-control" id="txt_data_demonstrativo_reclamado">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_data_demonstrativo_reclamado" title="Limpar Data Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_intervalo_leitura_dias">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_intervalo_leitura_dias">Intervalo de Leitura (em dias):</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_intervalo_leitura_dias" title="Copiar Intervalo de Leitura (em dias)">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_intervalo_leitura_dias" title="Colar Intervalo de Leitura (em dias)">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_intervalo_leitura_dias">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_intervalo_leitura_dias" title="Limpar Intervalo de Leitura (em dias)">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_media_consumo_diario">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_media_consumo_diario">Média de Consumo Diário (M3):</label>
+                                <input type="text" class="form-control" id="txt_media_consumo_diario" readonly>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_tipo_utilizacao">
+                            <div class="col-md-auto mb-3 w-100">
+                                <label>Tipo de Utilização:</label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="checkbox" class="btn-check" id="cbx_fogao" autocomplete="off">
+                                <label class="btn btn-info" for="cbx_fogao">
+                                    Fogão
+                                    <i class="fa-solid fa-fire"></i>
+                                </label>
+                                <input type="checkbox" class="btn-check" id="cbx_chuveiro" autocomplete="off">
+                                <label class="btn btn-info" for="cbx_chuveiro">
+                                    Chuveiro
+                                    <i class="fa-solid fa-shower"></i>
+                                </label>
+                                <input type="checkbox" class="btn-check" id="cbx_outros" autocomplete="off" href="#div_tipo_outros" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_tipo_outros">
+                                <label class="btn btn-info" for="cbx_outros">
+                                    Outros:
+                                    <i class="fa-solid fa-paperclip"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-auto container-fluid collapse" id="div_tipo_outros" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_tipo_outros" title="Copiar Outros Especificar">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_tipo_outros" title="Colar Outros Especificar">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_tipo_outros" placeholder="Especifique aqui o(s) tipo(s)">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_tipo_outros" title="Limpar Outros Especificar">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_ano_medidor">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_ano_medidor">Ano Medidor:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_ano_medidor" title="Copiar Ano Medidor">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_ano_medidor" title="Colar Ano Medidor">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_ano_medidor" min="1950" max="2025">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_ano_medidor" title="Limpar Ano Medidor">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_valor_demonstrativo_reclamado">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_valor_demonstrativo_reclamado">Valor Demonstrativo Reclamado:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_valor_demonstrativo_reclamado" title="Copiar Valor Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_valor_demonstrativo_reclamado" title="Colar Valor Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_valor_demonstrativo_reclamado" min="0">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_valor_demonstrativo_reclamado" title="Limpar Valor Demonstrativo Reclamado">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura">
+                            <div class="col-md-auto mb-3 w-100">
+                                <label class="form-check-label">Condição de Leitura:</label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_leitura" id="rdg_leitura_normal" autocomplete="off" checked>
+                                <label class="btn btn-info" for="rdg_leitura_normal">
+                                    Normal
+                                    <i class="fa-solid fa-check"></i>
+                                </label>
+                                <input type="radio" class="btn-check" name="rdg_leitura" id="rdg_leitura_media" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_leitura_media">
+                                    Média
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura_anterior">
+                            <div class="col-md-auto mb-3 w-100">
+                                <label class="form-check-label">Condição de Leitura Anterior:</label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_leitura_anterior" id="rdg_leitura_anterior_normal" autocomplete="off" checked>
+                                <label class="btn btn-info" for="rdg_leitura_anterior_normal">
+                                    Normal
+                                    <i class="fa-solid fa-check"></i>
+                                </label>
+                                <input type="radio" class="btn-check" name="rdg_leitura_anterior" id="rdg_leitura_anterior_media" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_leitura_anterior_media">
+                                    Média
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura_anterior_evidencia">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_leitura_anterior_evidencia">Medição/Leitura Anterior na Evidência:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_leitura_anterior_evidencia" title="Copiar Medição/Leitura Anterior na Evidência">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_leitura_anterior_evidencia" title="Colar Medição/Leitura Anterior na Evidência">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_leitura_anterior_evidencia" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_leitura_anterior_evidencia" title="Limpar Medição/Leitura Anterior na Evidência">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_evidencia_leitura_disponivel">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_evidencia_leitura_disponivel" href="#div_evidencia_leitura_disponivel" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_evidencia_leitura_disponivel">
+                                    <label class="form-check-label" for="cbx_evidencia_leitura_disponivel">Evidência de Leitura Disponível?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-auto container-fluid collapse" id="div_evidencia_leitura_disponivel" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="cbx_evidencia_leitura_correta">
+                                        <label class="form-check-label" for="cbx_evidencia_leitura_correta">Leitura Evidência Disponível Correta?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura_demonstrativo">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_leitura_demonstrativo">Leitura no Demonstrativo:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_leitura_demonstrativo" title="Copiar Leitura no Demonstrativo">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_leitura_demonstrativo" title="Colar Leitura no Demonstrativo">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_leitura_demonstrativo" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_leitura_demonstrativo" title="Limpar Leitura no Demonstrativo">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura_evidencia">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_leitura_evidencia">Leitura na Evidência:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_leitura_evidencia" title="Copiar Leitura na Evidência">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_leitura_evidencia" title="Colar Leitura na Evidência">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_leitura_evidencia" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_leitura_evidencia" title="Limpar Leitura na Evidência">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_media_seis_meses">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_media_seis_meses">Média de Consumo dos Últimos 6 Meses em M3:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_media_seis_meses" title="Copiar Média de Consumo dos Últimos 6 Meses em M3">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_media_seis_meses" title="Colar Média de Consumo dos Últimos 6 Meses em M3">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_media_seis_meses" min="0" step=".001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_media_seis_meses" title="Limpar Média de Consumo dos Últimos 6 Meses em M3">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_consumo_demonstrativo_reclamado">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_consumo_demonstrativo_reclamado">Consumo do Demonstrativo Reclamado em M3:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_consumo_demonstrativo_reclamado" title="Copiar Consumo do Demonstrativo Reclamado em M3">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_consumo_demonstrativo_reclamado" title="Colar Consumo do Demonstrativo Reclamado em M3">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" id="txt_consumo_demonstrativo_reclamado" min="0" step=".0001">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_consumo_demonstrativo_reclamado" title="Limpar Consumo do Demonstrativo Reclamado em M3">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_tipo_cliente">
+                            <div class="col-md-auto mb-3 w-100">
+                                <label class="form-check-label">Tipo Cliente:</label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_tipo_cliente" id="rdg_tipo_cliente_residencial" autocomplete="off" checked>
+                                <label class="btn btn-info" for="rdg_tipo_cliente_residencial">
+                                    Residencial
+                                    <i class="fa-solid fa-house"></i>
+                                </label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_tipo_cliente" id="rdg_tipo_cliente_comercial" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_tipo_cliente_comercial">
+                                    Comercial
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_tipo_cliente" id="rdg_tipo_cliente_shopping" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_tipo_cliente_shopping">
+                                    Shopping
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_bloco_apartamento">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_bloco_apartamento">Bloco / Apartamento:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_bloco_apartamento" title="Copiar Bloco / Apartamento">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_bloco_apartamento" title="Colar Bloco / Apartamento">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="text" class="form-control" id="txt_bloco_apartamento">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_bloco_apartamento" title="Limpar Bloco / Apartamento">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_entrada_atendimento">
+                            <div class="col-md-auto mb-3 w-100">
+                                <label class="form-check-label">Entrada Atendimento:</label>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_entrada_atendimento" id="rdg_entrada_atendimento_voz" autocomplete="off" checked>
+                                <label class="btn btn-info" for="rdg_entrada_atendimento_voz">
+                                    Voz
+                                    <i class="fa-solid fa-phone"></i>
+                                </label>
+                                <a class="btn btn-warning" href="tel:0800 729 7777" target="_blank">0800 729 7777</a>
+                                <a class="btn btn-warning" href="tel:3004-3002" target="_blank">MI 3004-3002</a>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_entrada_atendimento" id="rdg_entrada_atendimento_email" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_entrada_atendimento_email">
+                                    Email
+                                    <i class="fa-solid fa-envelope"></i>
+                                </label>
+                                <a class="btn btn-warning" href="mailto:contato@copaenergia.com.br" target="_blank">contato@copaenergia.com.br</a>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_entrada_atendimento" id="rdg_entrada_atendimento_portal" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_entrada_atendimento_portal">
+                                    Portal
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </label>
+                                <a class="btn btn-warning" href="https://mi.copaenergia.com.br/" target="_blank">https://mi.copaenergia.com.br/</a>
+                            </div>
+                            <div class="col-md-auto mb-3 w-100">
+                                <input type="radio" class="btn-check" name="rdg_entrada_atendimento" id="rdg_entrada_atendimento_whatsapp" autocomplete="off">
+                                <label class="btn btn-info" for="rdg_entrada_atendimento_whatsapp">
+                                    Whatsapp
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </label>
+                                <a class="btn btn-warning" href="https://wa.me/551130438910" target="_blank">(11) 3043-8910</a>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_leitura_alem_limite">
+                            <div class="col-md-auto mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="cbx_leitura_alem_limite">
+                                    <label class="form-check-label" for="cbx_leitura_alem_limite">Leitura Além do Limite?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_codigo_medidor">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_codigo_medidor">Código do Medidor:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_codigo_medidor" title="Copiar Código do Medidor">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_codigo_medidor" title="Colar Código do Medidor">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="text" class="form-control" id="txt_codigo_medidor">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_codigo_medidor" title="Limpar Código do Medidor">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row w-100" id="div_linha_analise_detalhada">
+                            <div class="col-md-auto mb-3">
+                                <label for="txt_analise_detalhada">Informe a Análise Detalhada:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_analise_detalhada" title="Copiar Análise Detalhada">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_analise_detalhada" title="Colar Análise Detalhada">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <textarea class="form-control" id="txt_analise_detalhada"></textarea>
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_analise_detalhada" title="Limpar Análise Detalhada">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid card custom-card shadow p-3">
+                    <div class="form-section">
+                        <div class="row w-100">
+                            <div class="col-md-auto mb-3">
+                                <a href="#div_media_completa" class="form-control btn btn-dark" id="btn_preencher_media" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_media_completa">
+                                    Analisar Média Completa <i class="fa-solid fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- dados pré definidos -->
+                        <div class="row w-100 mb-3" id="div_linha_fator_preco">
+                            <div class="col-md-auto w-100">
+                                <h4 class="border-bottom">
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                    DADOS PRÉ DEFINIDOS:
+                                </h4>
+                            </div>
+                            <div class="col-md-auto w-100">
+                                <label for="txt_fator">Fator:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_fator" title="Copiar Fator">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_fator" title="Colar Fator">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" min="0" id="txt_fator" value="2.3" step=".1" lang="pt-BR">
+                                </div>
+                            </div>
+                            <div class="col-lg-auto w-100">
+                                <label for="txt_preco_unitario">Preço Unitário (trocar "," por ponto "."):</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-light" id="btn_copiar_preco_unitario" title="Copiar Preço Unitário">
+                                        <i class="fa-solid fa-copy"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-dark" id="btn_colar_preco_unitario" title="Colar Preço Unitário">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="number" class="form-control" min="0" id="txt_preco_unitario" value="1.454" step=".001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid collapse" id="div_media_completa" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="txt_media_mes_ano" title="Mês/Ano Referência" placeholder="M/A" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_fator" title="Fator de Multiplicação" placeholder="Fator" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_m3" title="Metro(s) Cúbico(s)" placeholder="M3" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_consumo" title="Consumo em kg" placeholder="Kg" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_custo" title="Custo em R$" placeholder="R$" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_intervalo" title="Intervalo em Dias" placeholder="Dias" disabled/>
+                                        <input class="form-control" type="text" id="txt_media_unitario" title="Valor Unitário" placeholder="V.Un" disabled/>
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref1" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator1" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m31" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo1" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo1" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo1" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor1" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref2" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator2" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m32" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo2" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo2" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo2" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor2" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref3" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator3" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m33" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo3" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo3" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo3" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor3" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref4" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator4" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m34" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo4" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo4" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo4" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor4" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref5" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator5" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m35" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo5" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo5" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo5" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor5" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control analisar-media" type="text" id="txt_mes_ref6" />
+                                        <input class="form-control analisar-media" type="text" id="txt_fator6" />
+                                        <input class="form-control analisar-media" type="text" id="txt_m36" />
+                                        <input class="form-control analisar-media" type="text" id="txt_consumo6" />
+                                        <input class="form-control analisar-media" type="text" id="txt_custo6" />
+                                        <input class="form-control analisar-media" type="text" id="txt_intervalo6" />
+                                        <input class="form-control analisar-media" type="text" id="txt_valor6" />
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control medias" type="text" id="txt_mes_ref_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_fator_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_m3_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_consumo_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_custo_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_intervalo_media" placeholder="média" readonly />
+                                        <input class="form-control medias" type="text" id="txt_valor_media" placeholder="média" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3 w-100">
+                                    <div class="input-group" style="justify-content: center;">
+                                        <button type="button" class="btn btn-light" id="btn_colar_media_completa">Colar</button>
+                                        <button type="button" class="btn btn-dark" id="btn_calcular_media_completa">Calcular</button>
+                                        <button type="button" class="btn btn-info" id="btn_copiar_media_completa">Copiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- seção média de consumo -->
+                <div class="container-fluid card custom-card shadow p-3" style="display: none;">
+                    <div class="form-section">
+                        <div class="row w-100">
+                            <div class="col-md-auto mb-3">
+                                <a href="#div_media" class="form-control btn btn-dark" id="btn_preencher_media" data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_media">
+                                    Analisar Média <i class="fa-solid fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="container-fluid collapse" id="div_media" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor1">Valor 1:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor1" title="Copiar Valor 1">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor1" title="Colar Valor 1">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor1" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor1" title="Limpar Valor 1">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor2">Valor 2:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor2" title="Copiar Valor 2">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor2" title="Colar Valor 2">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor2" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor2" title="Limpar Valor 2">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor3">Valor 3:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor3" title="Copiar Valor 3">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor3" title="Colar Valor 3">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor3" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor3" title="Limpar Valor 3">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor4">Valor 4:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor4" title="Copiar Valor 4">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor4" title="Colar Valor 4">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor4" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor4" title="Limpar Valor 4">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor5">Valor 5:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor5" title="Copiar Valor 5">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor5" title="Colar Valor 5">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor5" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor5" title="Limpar Valor 5">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor6">Valor 6:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor6" title="Copiar Valor 6">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor6" title="Colar Valor 6">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor6" />
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor6" title="Limpar Valor 6">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_media">Média:</label>
+                                    <input type="text" class="form-control" id="txt_media" readonly>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto text-center">
+                                    <button type="button" class="btn btn-warning" id="btn_calcular_media">
+                                        Calcular Média <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- seção parcelamento de dívida -->
+                <div class="container-fluid card custom-card shadow p-3">
+                    <div class="form-section">
+                        <div class="row w-100">
+                            <div class="col-md-auto mb-3">
+                                <a href="#div_parcelamento" class="form-control btn btn-dark" id="btn_parcelamento"  data-bs-toggle="collapse" aria-expanded="false" aria-controls="div_parcelamento">
+                                    Parcelamento de Dívida <i class="fas fa-dollar-sign"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid collapse" id="div_parcelamento" style="padding-top: 15px; padding-bottom: 15px;">
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor_total_divida">Valor Total da Dívida:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_valor_total_divida" title="Copiar Valor Total da Dívida">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_valor_total_divida" title="Colar Valor Total da Dívida">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_valor_total_divida" step=".01"/>
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_valor_total_divida" title="Limpar Valor Total da Dívida">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_quantidade_parcelas">Quantidade de Parcelas:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-light" id="btn_copiar_quantidade_parcelas" title="Copiar Quantidade de Parcelas">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-dark" id="btn_colar_quantidade_parcelas" title="Colar Quantidade de Parcelas">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="txt_quantidade_parcelas" min="1" max="10"/>
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_quantidade_parcelas" title="Limpar Quantidade de Parcelas">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto mb-3">
+                                    <label for="txt_valor_parcela">Valor da Parcela:</label>
+                                    <input type="text" class="form-control" id="txt_valor_parcela" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-danger" id="btn_recarregar_pagina" title="Recarregar Página">
+       <i class="fa-solid fa-refresh"></i>
+    </button>
+    <button type="button" class="btn btn-danger" id="btn_gerar_script" title="Gerar Script">
+       <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-danger" id="btn_gerar_whatsapp" title="Gerar Whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </button>
+    <button type="button" class="btn btn-danger" id="btn_gerar_email" title="Gerar Email">
+        <i class="fa-solid fa-envelope"></i>
+    </button>
+    <button type="button" class="btn btn-danger" id="btn_gerar_sms" title="Gerar SMS">
+        <i class="fas fa-sms"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./notificacao.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

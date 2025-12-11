@@ -1,0 +1,155 @@
+h1, h4 {
+    color: #ff7f50; /* laranja */
+}
+
+body, .custom-card, .form-section, label {
+    color: #a0d7b2;
+    /* margin: 2px; */
+    /* padding: 0px; */
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.border-bottom {
+    color: #ff7f50; /* laranja */
+}
+
+#txt_media_mes_ano::placeholder,
+#txt_media_fator::placeholder,
+#txt_media_m3::placeholder,
+#txt_media_consumo::placeholder,
+#txt_media_custo::placeholder,
+#txt_media_intervalo::placeholder,
+#txt_media_unitario::placeholder
+{
+    color: #999; /* Grey color */
+    /* font-style: italic; */
+    font-weight: bold;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+#txt_mes_ref_media::placeholder,
+#txt_fator_media::placeholder,
+#txt_m3_media::placeholder,
+#txt_consumo_media::placeholder,
+#txt_custo_media::placeholder,
+#txt_intervalo_media::placeholder,
+#txt_valor_media::placeholder
+{
+    color: #999; /* Grey color */
+    font-style: italic;
+    /* font-weight: bold; */
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.custom-card {
+    background-color: #008f39; /* verde escuro */
+    border: 2px solid #002e58; /* azul escuro */
+    border-radius: 15px;
+    margin: 1px;
+}
+
+#div_titulo h1, #div_titulo {
+    color: #ffffff; /* verde escuro */
+    background-color: #000000;
+}
+
+#div_titulo {
+    border: 1px solid #ff7f50;
+    text-shadow: 
+    -1px -1px 0 #008f39,
+    1px -1px 0 #008f39,
+    -1px 1px 0 #008f39,
+    1px 1px 0 #008f39;
+}
+
+#btn_gerar_email, #btn_gerar_sms, #btn_gerar_whatsapp, #btn_gerar_script, #btn_recarregar_pagina {
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn_recarregar_pagina {
+    bottom: 190px;
+}
+
+#btn_gerar_script {
+    bottom: 150px;
+}
+
+#btn_gerar_whatsapp {
+    bottom: 110px;
+}
+
+#btn_gerar_email {
+    bottom: 70px;
+}
+
+#btn_gerar_sms {
+    bottom: 30px;
+}
+
+#btn_gerar_email:hover, #btn_gerar_sms:hover, #btn_gerar_whatsapp:hover, #btn_gerar_script:hover, #btn_recarregar_pagina:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+#btn_recarregar_pagina::before {
+    content: "Recarregar Página";
+}
+
+#btn_gerar_script::before {
+    content: "Gerar Texto Para Script";
+}
+
+#btn_gerar_whatsapp::before {
+    content: "Gerar Texto Para Whatsapp";
+}
+
+#btn_gerar_email::before {
+    content: "Gerar Texto Para E-mail";
+}    
+
+#btn_gerar_sms::before {
+    content: "Gerar Texto Para SMS";
+}    
+
+#btn_gerar_email::before, #btn_gerar_sms::before, #btn_gerar_whatsapp::before, #btn_gerar_script::before, #btn_recarregar_pagina::before {
+    position: absolute;
+    right: 46px; /* Distância do botão */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #000;
+    color: white;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out;
+    font-size: 14px;
+}
+
+#btn_gerar_email:hover::before, #btn_gerar_sms:hover::before, #btn_gerar_whatsapp:hover::before, #btn_gerar_script:hover::before, #btn_recarregar_pagina:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.analisar-media {
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.medias {
+    font-size: 0.7em;
+    text-align: center;
+    font-weight: bolder;
+}
